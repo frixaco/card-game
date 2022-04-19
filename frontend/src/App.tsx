@@ -22,7 +22,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <div className="h-4/6 w-full flex items-center justify-center flex-wrap">
+      <div className="h-4/6 w-full flex items-center sm:justify-center sm:flex-wrap overflow-auto">
         {currentDeck.drawed.map((cardId) => (
           <Card key={cardId} cardId={cardId} />
         ))}
