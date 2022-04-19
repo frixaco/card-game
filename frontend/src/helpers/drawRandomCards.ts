@@ -1,7 +1,7 @@
-import CloverIcon from 'assets/Clover.svg';
-import DiamondIcon from 'assets/Diamond.svg';
-import HeartIcon from 'assets/Heart.svg';
-import SpadeIcon from 'assets/Spade.svg';
+import CloverIcon from 'assets/icons/Clover.svg';
+import DiamondIcon from 'assets/icons/Diamond.svg';
+import HeartIcon from 'assets/icons/Heart.svg';
+import SpadeIcon from 'assets/icons/Spade.svg';
 import { Card } from 'types';
 
 function pickRandomNCards(arr: string[], n = 5) {

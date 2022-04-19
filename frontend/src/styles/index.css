@@ -1,1 +1,10 @@
 @import './tailwind.css';
+
+@font-face {
+  font-family: AlfaSlabOne;
+  src: url('../assets/fonts/AlfaSlabOne-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: AlfaSlabOne;
+}
