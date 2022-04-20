@@ -1,11 +1,11 @@
-import { FC, memo } from 'react';
+import React, { memo } from 'react';
 
 interface SecondaryButtonProps {
   text: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const SecondaryButton: FC<SecondaryButtonProps> = memo(({ text, onClick }) => {
+const SecondaryButton: React.FC<SecondaryButtonProps> = memo(({ text, onClick }) => {
   return (
     <button
       onClick={onClick}

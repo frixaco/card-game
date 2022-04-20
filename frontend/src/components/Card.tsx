@@ -1,10 +1,11 @@
-import { deck, suitIconMapping } from 'helpers/drawRandomCards';
+import React from 'react';
+import { deck, suitIconMapping } from '../helpers/drawRandomCards';
 
 interface CardProps {
   cardId: string;
 }
 
-function Card({ cardId }: CardProps) {
+const Card: React.FC<CardProps> = ({ cardId }) => {
   const { suit, rank, color } = deck[cardId];
   const icon = suitIconMapping[suit];
 
@@ -26,6 +27,6 @@ function Card({ cardId }: CardProps) {
       </div>
     </div>
   );
-}
+};
 
 export default Card;

@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import React from 'react';
 
 interface CardsCounterProps {
   acesLeftCount: number;
   cardsLeftCount: number;
 }
 
-const CardsCounter: FC<CardsCounterProps> = ({ acesLeftCount, cardsLeftCount }) => {
+const CardsCounter: React.FC<CardsCounterProps> = ({ acesLeftCount, cardsLeftCount }) => {
   return (
     <div className="relative px-2 py-5 sm:px-5 w-28 sm:w-46 flex flex-col items-center border bg-black text-white border-yellow-450">
       <span className="text-4xl">{cardsLeftCount}</span>

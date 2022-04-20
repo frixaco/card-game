@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import winner from 'assets/icons/winner.svg';
-import Card from 'components/Card';
-import CardsCounter from 'components/CardsCounter';
-import GameControls from 'components/GameControls';
-import SecondaryButton from 'components/common/SecondryButton';
-import { useDeck } from 'context';
-import { deck } from 'helpers/drawRandomCards';
+import { useDeck } from '../context';
+import { deck } from '../helpers/drawRandomCards';
+import Card from './Card';
+import CardsCounter from './CardsCounter';
+import GameControls from './GameControls';
+import SecondaryButton from './common/SecondryButton';
 
 const CardGame: React.FC = () => {
   const [isWinner, setIsWinner] = useState(false);

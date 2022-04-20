@@ -5,3 +5,4 @@ export interface Card {
 }
 
 export const CARDS_COUNT = 52;
+export const CARDS_DEAL_COUNT = 5;

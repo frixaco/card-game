@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import React, { memo } from 'react';
 import PrimaryButton from './common/PrimaryButton';
 import SecondaryButton from './common/SecondryButton';
 
@@ -7,7 +7,7 @@ interface GameControlsProps {
   handleReset: () => void;
 }
 
-const GameControls: FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
+const GameControls: React.FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
   return (
     <div className="w-full mt-4 flex flex-col items-center justify-end md:justify-around">
       <div className="self-center">

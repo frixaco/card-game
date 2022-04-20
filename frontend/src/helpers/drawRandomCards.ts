@@ -1,16 +1,16 @@
-import CloverIcon from 'assets/icons/Clover.svg';
-import DiamondIcon from 'assets/icons/Diamond.svg';
-import HeartIcon from 'assets/icons/Heart.svg';
-import SpadeIcon from 'assets/icons/Spade.svg';
-import { Card } from 'types';
+import CloverIcon from '../assets/icons/Clover.svg';
+import DiamondIcon from '../assets/icons/Diamond.svg';
+import HeartIcon from '../assets/icons/Heart.svg';
+import SpadeIcon from '../assets/icons/Spade.svg';
+import { Card, CARDS_DEAL_COUNT } from '../types';
 
 /**
  *
  * @param arr Array to pick from
- * @param n Number of elements to pick (default = 5)
+ * @param n Number of elements to pick (default is 5)
  * @returns Array of `n` elements
  */
-function pickRandomNElements<T>(arr: T[], n = 5) {
+function pickRandomNElements<T>(arr: T[], n = CARDS_DEAL_COUNT) {
   let len = arr.length;
 
   const result: T[] = new Array(n);
@@ -45,7 +45,7 @@ export const suitIconMapping: { [suit: string]: string } = {
 };
 
 /**
- * Generate deck of 52 cards, where each `key` is an ID - "\<suit\>\<rank\>"
+ * Generate a deck of 52 (default) cards, where each `key` is an ID - "\<suit\>\<rank\>"
  *
  * Each `value` is an object that contains card's `suit`, `rank` and `color`
  * @returns Deck object and array of card IDs

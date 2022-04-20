@@ -1,5 +1,5 @@
-import { createContext, FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { deck, drawRandomCards } from 'helpers/drawRandomCards';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { deck, drawRandomCards } from '../helpers/drawRandomCards';
 
 export interface CardGameActionsContext {
   acesLeftCount: number;
@@ -13,7 +13,7 @@ export interface CardGameActionsContext {
 
 export const DeckActionsContext = createContext<CardGameActionsContext | undefined>(undefined);
 
-export const DeckProvider: FC = (props) => {
+export const DeckProvider: React.FC = (props) => {
   const [currentDeck, setCurrentDeck] = useState(() => drawRandomCards());
   const [acesLeftCount, setAcesLeftCount] = useState(4);
 
