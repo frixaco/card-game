@@ -4,7 +4,7 @@ import { useDeck } from '../context';
 import { deck } from '../helpers/drawRandomCards';
 import Card from './Card';
 import CardsCounter from './CardsCounter';
-import GameControls from './GameControls';
+import DrawOrReset from './DrawOrReset';
 import SecondaryButton from './common/SecondryButton';
 
 const CardGame: React.FC = () => {
@@ -46,9 +46,12 @@ const CardGame: React.FC = () => {
         </div>
       )}
 
-      <div className="w-full flex-1 flex items-center justify-center flex-wrap">
+      <div
+        data-testid="cards-section"
+        className="w-full flex-1 flex items-center justify-center flex-wrap"
+      >
         {currentDeck.drawed.map((cardId) => (
-          <Card key={cardId} cardId={cardId} />
+          <Card key={cardId} data-id={cardId} cardId={cardId} />
         ))}
       </div>
 
@@ -79,7 +82,7 @@ const CardGame: React.FC = () => {
       )}
 
       {!gameOver && !noCardsLeft && (
-        <GameControls handleDraw={handleDraw} handleReset={handleReset} />
+        <DrawOrReset handleDraw={handleDraw} handleReset={handleReset} />
       )}
     </div>
   );

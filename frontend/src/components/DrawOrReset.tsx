@@ -7,7 +7,7 @@ interface GameControlsProps {
   handleReset: () => void;
 }
 
-const GameControls: React.FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
+const DrawOrReset: React.FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
   return (
     <div className="w-full mt-4 flex flex-col items-center justify-end md:justify-around">
       <div className="self-center">
@@ -20,6 +20,6 @@ const GameControls: React.FC<GameControlsProps> = memo(({ handleDraw, handleRese
     </div>
   );
 });
-GameControls.displayName = 'GameControls';
+DrawOrReset.displayName = 'DrawOrReset';
 
-export default GameControls;
+export default DrawOrReset;
