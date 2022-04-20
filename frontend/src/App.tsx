@@ -8,6 +8,9 @@ const App: React.FC = () => {
   const [acesLeft, setAcesLeft] = useState(4);
   const [isWinner, setIsWinner] = useState(false);
 
+  const gameOver = currentDeck.cardsLeft.length > 2 && acesLeft === 0;
+  const gameEnd = currentDeck.cardsLeft.length === 0;
+
   useEffect(() => {
     const acesCounter = currentDeck.cardsLeft.reduce(
       (count, card) => (deck[card].rank === 'A' ? count + 1 : count),
@@ -24,14 +27,14 @@ const App: React.FC = () => {
     }
   }, [currentDeck]);
 
-  const gameOver = currentDeck.cardsLeft.length > 2 && acesLeft === 0;
-  const gameEnd = currentDeck.cardsLeft.length === 0;
-
   const handleDraw = () => {
     setCurrentDeck(drawRandomCards());
   };
 
   const handleReset = () => {
+    setIsWinner(false);
+    // Prevent glitch during lose => start
+    setAcesLeft(4);
     setCurrentDeck(drawRandomCards(true));
   };
 
@@ -49,14 +52,26 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {gameOver && (
+      {gameEnd && isWinner && (
         <div>
-          <h5>Game over</h5>
+          <img src={winner} alt="winner" />
+        </div>
+      )}
+
+      <div className="h-3/6 w-full flex items-center sm:justify-center sm:flex-wrap overflow-auto select-none">
+        {currentDeck.drawed.map((cardId) => (
+          <Card key={cardId} cardId={cardId} />
+        ))}
+      </div>
+
+      {gameOver && (
+        <div className="h-2/6 w-full flex flex-col items-center justify-between">
+          <h5 className="text-white text-3xl">Game over</h5>
 
           <button
             onClick={handleReset}
             type="button"
-            className="w-32 h-16 text-2xl tracking-wider rounded-xl border-2 focus:outline-none md:self-end text-yellow-450 border-yellow-450"
+            className="px-6 py-2 text-2xl capitalize tracking-wider rounded-xl border-2 focus:outline-none text-yellow-450 border-yellow-450 select-none whitespace-nowrap"
           >
             Play again
           </button>
@@ -64,15 +79,11 @@ const App: React.FC = () => {
       )}
 
       {gameEnd && isWinner && (
-        <div>
-          <div>
-            <img src={winner} alt="winner" />
-          </div>
-
+        <div className="h-2/6 w-full flex flex-col items-center justify-center">
           <button
             onClick={handleReset}
             type="button"
-            className="w-32 h-16 text-2xl tracking-wider rounded-xl border-2 focus:outline-none md:self-end text-yellow-450 border-yellow-450 select-none"
+            className="px-6 py-2 text-2xl capitalize tracking-wider rounded-xl border-2 focus:outline-none text-yellow-450 border-yellow-450 select-none whitespace-nowrap"
           >
             Play again
           </button>
@@ -80,30 +91,25 @@ const App: React.FC = () => {
       )}
 
       {gameEnd && !isWinner && (
-        <div>
-          <div>
-            <h5>You lose.</h5>
-            <h5>Better luck next time!</h5>
-          </div>
+        <div className="h-2/6 w-full flex flex-col items-center justify-around">
+          <h5 className="text-center text-white text-3xl pb-10">
+            You lose.
+            <br />
+            Better luck next time!
+          </h5>
 
           <button
             onClick={handleReset}
             type="button"
-            className="w-32 h-16 text-2xl tracking-wider rounded-xl border-2 focus:outline-none md:self-end text-yellow-450 border-yellow-450 select-none"
+            className="px-6 py-2 text-2xl capitalize tracking-wider rounded-xl border-2 focus:outline-none text-yellow-450 border-yellow-450 select-none whitespace-nowrap"
           >
             Play again
           </button>
         </div>
       )}
 
-      <div className="h-4/6 w-full flex items-center sm:justify-center sm:flex-wrap overflow-auto select-none">
-        {currentDeck.drawed.map((cardId) => (
-          <Card key={cardId} cardId={cardId} />
-        ))}
-      </div>
-
       {!gameOver && !gameEnd && (
-        <div className="h-1/6 w-full flex flex-col items-center justify-between">
+        <div className="h-2/6 w-full flex flex-col items-center justify-end">
           <button
             onClick={handleDraw}
             type="button"
