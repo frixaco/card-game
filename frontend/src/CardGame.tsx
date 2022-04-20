@@ -16,8 +16,8 @@ const CardGame: React.FC = () => {
   const noCardsLeft = currentDeck.cardsLeft.length === 0;
 
   useEffect(() => {
-    if (currentDeck.cardsLeft.length === 2) {
-      if (currentDeck.cardsLeft.find((c) => deck[c].rank === 'A')) {
+    if (currentDeck.cardsLeft.length === 0) {
+      if (currentDeck.drawed.find((c) => deck[c].rank === 'A')) {
         setIsWinner(true);
       } else {
         setIsWinner(false);
@@ -46,7 +46,7 @@ const CardGame: React.FC = () => {
         </div>
       )}
 
-      <div className="w-full flex-1 flex items-center sm:justify-center sm:flex-wrap overflow-auto">
+      <div className="w-full flex-1 flex items-center justify-center flex-wrap">
         {currentDeck.drawed.map((cardId) => (
           <Card key={cardId} cardId={cardId} />
         ))}

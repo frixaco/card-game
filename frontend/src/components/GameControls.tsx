@@ -9,7 +9,7 @@ interface GameControlsProps {
 
 const GameControls: FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
   return (
-    <div className="w-full flex flex-col items-center justify-end md:justify-around">
+    <div className="w-full mt-4 flex flex-col items-center justify-end md:justify-around">
       <div className="self-center">
         <PrimaryButton text="Deal" onClick={handleDraw} />
       </div>
