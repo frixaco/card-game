@@ -1,0 +1,25 @@
+import { FC, memo } from 'react';
+import PrimaryButton from './common/PrimaryButton';
+import SecondaryButton from './common/SecondryButton';
+
+interface GameControlsProps {
+  handleDraw: () => void;
+  handleReset: () => void;
+}
+
+const GameControls: FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
+  return (
+    <div className="w-full flex flex-col items-center justify-end md:justify-around">
+      <div className="self-center">
+        <PrimaryButton text="Deal" onClick={handleDraw} />
+      </div>
+
+      <div className="mt-6 md:mt-0 md:self-end">
+        <SecondaryButton text="Reset" onClick={handleReset} />
+      </div>
+    </div>
+  );
+});
+GameControls.displayName = 'GameControls';
+
+export default GameControls;

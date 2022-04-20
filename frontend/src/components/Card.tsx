@@ -10,7 +10,7 @@ function Card({ cardId }: CardProps) {
 
   return (
     <div
-      className={`bg-white m-2 p-8 rounded-3xl flex flex-col justify-between min-w-36 md:w-48 h-48 md:h-64 text-${color}`}
+      className={`m-2 p-8 min-w-32 md:w-40 xl:w-48 h-48 md:h-56 xl:h-64 rounded-3xl flex flex-col justify-between text-${color} bg-white`}
     >
       <div className="h-1/4 flex">
         <span className="text-5xl">{rank}</span>

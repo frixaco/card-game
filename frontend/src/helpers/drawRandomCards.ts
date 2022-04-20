@@ -4,10 +4,16 @@ import HeartIcon from 'assets/icons/Heart.svg';
 import SpadeIcon from 'assets/icons/Spade.svg';
 import { Card } from 'types';
 
-function pickRandomNCards(arr: string[], n = 5) {
+/**
+ *
+ * @param arr Array to pick from
+ * @param n Number of elements to pick (default = 5)
+ * @returns Array of `n` elements
+ */
+function pickRandomNElements<T>(arr: T[], n = 5) {
   let len = arr.length;
 
-  const result: string[] = new Array(n);
+  const result: T[] = new Array(n);
   const taken = new Array(len);
 
   if (n > len) return arr;
@@ -27,6 +33,10 @@ function pickRandomNCards(arr: string[], n = 5) {
   return result;
 }
 
+/**
+ * @property `key` - Card suit
+ * @property `value` - SVG icon path
+ */
 export const suitIconMapping: { [suit: string]: string } = {
   C: CloverIcon,
   D: DiamondIcon,
@@ -34,6 +44,12 @@ export const suitIconMapping: { [suit: string]: string } = {
   S: SpadeIcon,
 };
 
+/**
+ * Generate deck of 52 cards, where each `key` is an ID - "\<suit\>\<rank\>"
+ *
+ * Each `value` is an object that contains card's `suit`, `rank` and `color`
+ * @returns Deck object and array of card IDs
+ */
 function generateDeck() {
   const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'] as const;
   const suits = ['C', 'D', 'H', 'S'] as const;
@@ -63,7 +79,7 @@ function memoizedCardDrawer() {
   let cardsLeft = deckIds;
 
   return (reset = false) => {
-    const drawed = pickRandomNCards(reset ? deckIds : cardsLeft);
+    const drawed = pickRandomNElements(reset ? deckIds : cardsLeft);
     cardsLeft = (reset ? deckIds : cardsLeft).filter((cardId) => !drawed.includes(cardId));
     return {
       drawed,
@@ -72,6 +88,10 @@ function memoizedCardDrawer() {
   };
 }
 
-const drawRandomCards = memoizedCardDrawer();
-
-export default drawRandomCards;
+/**
+ * Function to handle card deals
+ *
+ * - Keeps tracks of cards left
+ * - Resets or updates cards left
+ */
+export const drawRandomCards = memoizedCardDrawer();
