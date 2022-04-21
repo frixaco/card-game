@@ -7,6 +7,7 @@ interface GameControlsProps {
   handleReset: () => void;
 }
 
+// Memoizing the component to make sure it rerenders only when handleDraw and handleReset are recreated
 const DrawOrReset: React.FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
   return (
     <div className="w-full mt-4 flex flex-col items-center justify-end md:justify-around">

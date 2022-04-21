@@ -4,7 +4,7 @@ import DrawOrReset from '../components/DrawOrReset';
 import PrimaryButton from '../components/common/PrimaryButton';
 import SecondaryButton from '../components/common/SecondryButton';
 
-test('PrimaryButton click fires', async () => {
+test('PrimaryButton click handler fires', async () => {
   const buttonText = 'Deal';
   const onClick = jest.fn();
 
@@ -15,7 +15,7 @@ test('PrimaryButton click fires', async () => {
   expect(onClick).toHaveBeenCalledTimes(1);
 });
 
-test('SecondaryButton click fires', async () => {
+test('SecondaryButton click handler fires', async () => {
   const buttonText = 'Reset';
   const onClick = jest.fn();
 
@@ -26,7 +26,7 @@ test('SecondaryButton click fires', async () => {
   expect(onClick).toHaveBeenCalledTimes(1);
 });
 
-test('Draw and Reset buttons work', async () => {
+test('Draw and Reset buttons click handlers fire', async () => {
   const handleDraw = jest.fn();
   const handleReset = jest.fn();
 

@@ -26,6 +26,7 @@ const CardGame: React.FC = () => {
     }
   }, [currentDeck]);
 
+  // Memoizing handleDraw and handleDraw to avoid extra rerenders of DrawOrReset and buttons
   const handleDraw = useCallback(() => {
     draw();
   }, [draw]);
@@ -41,12 +42,14 @@ const CardGame: React.FC = () => {
         <CardsCounter acesLeftCount={acesLeftCount} cardsLeftCount={currentDeck.cardsLeft.length} />
       </div>
 
+      {/* Winner banner */}
       {noCardsLeft && isWinner && (
         <motion.div initial={{ scale: '50%' }} animate={{ scale: '100%' }}>
           <img src={winner} alt="winner" />
         </motion.div>
       )}
 
+      {/* Cards section */}
       <div
         data-testid="cards-section"
         className="w-full flex-1 flex items-center justify-center flex-wrap"
@@ -56,6 +59,7 @@ const CardGame: React.FC = () => {
         ))}
       </div>
 
+      {/* Game Over message */}
       {gameOver && (
         <div className="w-full flex flex-col items-center justify-between">
           <h5 className="mb-8 text-white tracking-widest text-4xl ">Game over</h5>
@@ -64,12 +68,14 @@ const CardGame: React.FC = () => {
         </div>
       )}
 
+      {/* Winner message */}
       {noCardsLeft && isWinner && (
         <div className="w-full flex flex-col items-center justify-center">
           <SecondaryButton text="Play again" onClick={handleReset} />
         </div>
       )}
 
+      {/* Loser message */}
       {noCardsLeft && !isWinner && (
         <div className="w-full flex flex-col items-center justify-around">
           <h5 className="text-center text-white text-3xl pb-10">
@@ -82,6 +88,7 @@ const CardGame: React.FC = () => {
         </div>
       )}
 
+      {/* Display Deal, Reset btns while game is not finished */}
       {!gameOver && !noCardsLeft && (
         <DrawOrReset handleDraw={handleDraw} handleReset={handleReset} />
       )}

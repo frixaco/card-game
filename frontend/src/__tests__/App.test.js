@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { CARDS_COUNT, CARDS_DEAL_COUNT } from 'types';
 import App from '../App';
 
-test('Cards and counters match. Counters update Deal and Reset clicked', async () => {
+test('Cards and counters match. Counters update when Deal and Reset clicked', async () => {
   render(<App />);
 
   expect(screen.getByTestId('cards-section').children.length).toEqual(CARDS_DEAL_COUNT);

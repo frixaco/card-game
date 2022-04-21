@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Accepts a media query string then uses the matchMedia API to determine if it matches with the current document
+ *
+ * @param query media query string (e.g. `(min-width; 640px)`)
+ * @returns `true` if query matches, otherwise `false`
+ */
 export default function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
 

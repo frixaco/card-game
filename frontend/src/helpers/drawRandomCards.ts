@@ -6,9 +6,9 @@ import { Card, CARDS_DEAL_COUNT } from '../types';
 
 /**
  *
- * @param arr Array to pick from
- * @param n Number of elements to pick (default is 5)
- * @returns Array of `n` elements
+ * @param arr Array to pick items from
+ * @param n Number of items to pick (default is 5)
+ * @returns Array of `n` items
  */
 function pickRandomNElements<T>(arr: T[], n = CARDS_DEAL_COUNT) {
   let len = arr.length;
@@ -34,6 +34,7 @@ function pickRandomNElements<T>(arr: T[], n = CARDS_DEAL_COUNT) {
 }
 
 /**
+ * Map card suits to SVG icons
  * @property `key` - Card suit
  * @property `value` - SVG icon path
  */
@@ -45,9 +46,8 @@ export const suitIconMapping: { [suit: string]: string } = {
 };
 
 /**
- * Generate a deck of 52 (default) cards, where each `key` is an ID - "\<suit\>\<rank\>"
- *
- * Each `value` is an object that contains card's `suit`, `rank` and `color`
+ * Generate a deck of 52 (default) cards, where each `key` is an ID - "\<suit\>\<rank\>" and
+ * each `value` is an object that contains card's `suit`, `rank` and `color`
  * @returns Deck object and array of card IDs
  */
 function generateDeck() {
@@ -62,6 +62,7 @@ function generateDeck() {
       const id = suit + rank;
       deckIds.push(id);
 
+      // Store card info
       deck[id] = {
         suit,
         rank,
