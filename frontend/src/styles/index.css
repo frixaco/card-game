@@ -5,6 +5,13 @@
   src: url('../assets/fonts/AlfaSlabOne-Regular.ttf') format('truetype');
 }
 
+html,
 body {
+  @apply bg-green-800;
+  height: 100%;
   font-family: AlfaSlabOne;
+}
+
+#root {
+  height: 100%;
 }

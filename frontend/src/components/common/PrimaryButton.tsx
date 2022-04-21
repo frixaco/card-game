@@ -10,7 +10,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(({ text, onClick }) => 
     <button
       onClick={onClick}
       type="button"
-      className="px-10 md:px-14 py-3 md:py-5 text-5xl md:text-6xl uppercase tracking-widest rounded-xl focus:outline-none text-black bg-yellow-450"
+      className="transform hover:-translate-y-px shadow hover:shadow-lg px-10 md:px-14 py-3 md:py-5 text-5xl md:text-6xl uppercase tracking-widest rounded-xl focus:outline-none text-black bg-yellow-450"
     >
       {text}
     </button>

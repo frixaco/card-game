@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { useCallback, useEffect, useState } from 'react';
 import winner from 'assets/icons/winner.svg';
 import { useDeck } from '../context';
@@ -35,23 +36,23 @@ const CardGame: React.FC = () => {
   }, [reset]);
 
   return (
-    <div className="h-screen py-10 lg:py-20 px-16 flex flex-col items-center bg-green-800 select-none">
+    <div className="h-full py-10 lg:py-20 px-2 sm:px-20 flex flex-col items-center select-none">
       <div className="w-full flex items-center justify-center">
         <CardsCounter acesLeftCount={acesLeftCount} cardsLeftCount={currentDeck.cardsLeft.length} />
       </div>
 
       {noCardsLeft && isWinner && (
-        <div>
+        <motion.div initial={{ scale: '50%' }} animate={{ scale: '100%' }}>
           <img src={winner} alt="winner" />
-        </div>
+        </motion.div>
       )}
 
       <div
         data-testid="cards-section"
         className="w-full flex-1 flex items-center justify-center flex-wrap"
       >
-        {currentDeck.drawed.map((cardId) => (
-          <Card key={cardId} data-id={cardId} cardId={cardId} />
+        {currentDeck.drawed.map((cardId, idx) => (
+          <Card key={cardId} data-id={cardId} cardId={cardId} order={idx} />
         ))}
       </div>
 
