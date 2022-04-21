@@ -5,9 +5,9 @@ import CardsCounter from '../components/CardsCounter';
 test('CardCounter displays cards left and aces left', async () => {
   render(<CardsCounter acesLeftCount={4} cardsLeftCount={42} />);
 
-  expect(screen.getByText(4)).toBeVisible();
   expect(screen.getByText('Aces left')).toBeVisible();
+  expect(screen.getByTestId('acesLeftCount')).toHaveTextContent('4');
 
-  expect(screen.getByText(42)).toBeVisible();
   expect(screen.getByText('Cards left')).toBeVisible();
+  expect(screen.getByTestId('cardsLeftCount')).toHaveTextContent('42');
 });
