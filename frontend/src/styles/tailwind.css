@@ -3,3 +3,17 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+  .btn-base {
+    @apply transform hover:-translate-y-px shadow hover:shadow-lg tracking-widest rounded-xl focus:outline-none whitespace-nowrap;
+  }
+
+  .btn-primary {
+    @apply btn-base px-10 md:px-14 py-3 md:py-5 text-5xl md:text-6xl uppercase text-black bg-yellow-450;
+  }
+
+  .btn-secondary {
+    @apply btn-base px-6 py-2 text-2xl capitalize border-2 text-yellow-450 border-yellow-450;
+  }
+}

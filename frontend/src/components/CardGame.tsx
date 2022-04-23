@@ -6,7 +6,7 @@ import { deck } from '../helpers/drawRandomCards';
 import Card from './Card';
 import CardsCounter from './CardsCounter';
 import DrawOrReset from './DrawOrReset';
-import SecondaryButton from './common/SecondryButton';
+import Button from './common/Button';
 
 const CardGame: React.FC = () => {
   const [isWinner, setIsWinner] = useState(false);
@@ -64,14 +64,24 @@ const CardGame: React.FC = () => {
         <div className="w-full flex flex-col items-center justify-between">
           <h5 className="mb-8 text-white tracking-widest text-4xl ">Game over</h5>
 
-          <SecondaryButton text="Play again" onClick={handleReset} />
+          <Button
+            type="secondary"
+            text="Play again"
+            onClick={handleReset}
+            aria-label="Play again"
+          />
         </div>
       )}
 
       {/* Winner message */}
       {noCardsLeft && isWinner && (
         <div className="w-full flex flex-col items-center justify-center">
-          <SecondaryButton text="Play again" onClick={handleReset} />
+          <Button
+            type="secondary"
+            text="Play again"
+            onClick={handleReset}
+            aria-label="Play again"
+          />
         </div>
       )}
 
@@ -84,7 +94,12 @@ const CardGame: React.FC = () => {
             Better luck next time!
           </h5>
 
-          <SecondaryButton text="Play again" onClick={handleReset} />
+          <Button
+            type="secondary"
+            text="Play again"
+            onClick={handleReset}
+            aria-label="Play again"
+          />
         </div>
       )}
 

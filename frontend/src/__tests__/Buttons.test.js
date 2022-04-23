@@ -1,25 +1,24 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DrawOrReset from '../components/DrawOrReset';
-import PrimaryButton from '../components/common/PrimaryButton';
-import SecondaryButton from '../components/common/SecondryButton';
+import Button from '../components/common/Button';
 
-test('PrimaryButton click handler fires', async () => {
+test('Button click handler fires', async () => {
   const buttonText = 'Deal';
   const onClick = jest.fn();
 
-  render(<PrimaryButton text={buttonText} onClick={onClick} />);
+  render(<Button type="primary" text={buttonText} onClick={onClick} aria-label="Deal" />);
 
   fireEvent.click(screen.getByText(buttonText));
 
   expect(onClick).toHaveBeenCalledTimes(1);
 });
 
-test('SecondaryButton click handler fires', async () => {
+test('Button click handler fires', async () => {
   const buttonText = 'Reset';
   const onClick = jest.fn();
 
-  render(<SecondaryButton text={buttonText} onClick={onClick} />);
+  render(<Button type="secondary" text={buttonText} onClick={onClick} aria-label="Reset" />);
 
   fireEvent.click(screen.getByText(buttonText));
 

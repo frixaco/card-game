@@ -1,26 +1,25 @@
 import React, { memo } from 'react';
-import PrimaryButton from './common/PrimaryButton';
-import SecondaryButton from './common/SecondryButton';
+import Button from './common/Button';
 
-interface GameControlsProps {
+interface DealOrResetProps {
   handleDraw: () => void;
   handleReset: () => void;
 }
 
 // Memoizing the component to make sure it rerenders only when handleDraw and handleReset are recreated
-const DrawOrReset: React.FC<GameControlsProps> = memo(({ handleDraw, handleReset }) => {
+const DealOrReset: React.FC<DealOrResetProps> = memo(({ handleDraw, handleReset }) => {
   return (
     <div className="w-full mt-4 flex flex-col items-center justify-end md:justify-around">
       <div className="self-center">
-        <PrimaryButton text="Deal" onClick={handleDraw} />
+        <Button type="primary" text="Deal" onClick={handleDraw} aria-label="Deal" />
       </div>
 
       <div className="mt-6 md:mt-0 md:self-end">
-        <SecondaryButton text="Reset" onClick={handleReset} />
+        <Button type="secondary" text="Reset" onClick={handleReset} aria-label="Reset" />
       </div>
     </div>
   );
 });
-DrawOrReset.displayName = 'DrawOrReset';
+DealOrReset.displayName = 'DealOrReset';
 
-export default DrawOrReset;
+export default DealOrReset;

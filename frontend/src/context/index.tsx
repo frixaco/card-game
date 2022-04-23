@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { deck, drawRandomCards } from '../helpers/drawRandomCards';
 
-export interface DeckActions {
+export interface DeckContextInterface {
   acesLeftCount: number;
   currentDeck: {
     drawed: string[];
@@ -11,7 +11,7 @@ export interface DeckActions {
   reset: () => void;
 }
 
-export const DeckActionsContext = createContext<DeckActions | undefined>(undefined);
+export const DeckContext = createContext<DeckContextInterface | undefined>(undefined);
 
 /**
  * @param props children
@@ -54,7 +54,7 @@ export const DeckProvider: React.FC = (props) => {
     [acesLeftCount, currentDeck, draw, reset]
   );
 
-  return <DeckActionsContext.Provider value={value} {...props} />;
+  return <DeckContext.Provider value={value} {...props} />;
 };
 
 /**
@@ -62,7 +62,7 @@ export const DeckProvider: React.FC = (props) => {
  * @returns Provider value
  */
 export const useDeck = () => {
-  const context = useContext(DeckActionsContext);
+  const context = useContext(DeckContext);
 
   if (!context) {
     throw new Error(`useDeck should be used withing DeckProvider`);
