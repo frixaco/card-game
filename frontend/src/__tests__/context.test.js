@@ -4,7 +4,7 @@ import CardGame from '../components/CardGame';
 import { DeckProvider } from '../context';
 import { deckIds } from '../helpers/drawRandomCards';
 
-const customRender = (children, { value, ...renderOptions }) => {
+export const customRender = (children, { value, ...renderOptions }) => {
   return render(<DeckProvider value={value}>{children}</DeckProvider>, renderOptions);
 };
 
