@@ -7,16 +7,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Local env
-/.env
-.venv
-.python-version
-
-# Compiled stuff
-*.pyc
-__pycache__
-.pytest_cache
-
 # Editor
 .vscode
 .idea
+
+# Compiled
+build

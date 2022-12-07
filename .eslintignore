@@ -1,2 +1,3 @@
-server/
-*/src/generated
+build/
+src/react-app-env.d.ts
+*.svg

@@ -1,257 +1,66 @@
-# Uplift Interview
+## Description
 
-Welcome!
+<!--- Provide a general summary of your changes in the Title above -->
+<!--- Before filling this out, please follow commit guidelines: -->
+<!--- https://chris.beams.io/posts/git-commit/ -->
+<!--- In short: first line ~50 chars, then blank line, then bullets or paragraph summarizing. -->
 
-## Intro
+(I followed [Commitizen ](https://github.com/commitizen/cz-cli) commit guidelines)
 
-This repository contains the Uplift coding challenge.
-We believe in letting you work as freely as you want within the constraints of
-this setup. Our goals are to assess:
+<!--- Please explain the choices and tradeoffs you made, libraries, what could be done better with more time, etc. -->
 
-- that you can follow specs/requirement docs, making pragmatic decisions along the way
-- your level of expertise (mid-level=good approach, expert level=teach us something we don't know)
+### Using useCallback, useMemo
 
-## Table of Contents
+They were used only for **_demonstration_** purposes. In real world scenario, I would only use them if I was doing some computationally intensive tasks.
 
-1. [Challenge criteria](#challenge-criteria)
-2. [General instructions](#general-instructions)
-3. [Frontend challenge](#frontend-challenge)
-4. [Backend challenge: Python](#backend-challenge-python)
-5. [Backend challenge: NodeJS](#backend-challenge-node)
-6. [Backend challenge: PHP](#backend-challenge-php)
-7. [License and sharing](#license-and-sharing)
+### Using React Context
 
-## Evaluation criteria
+I think, using Context is a good way to abstract away some logic, make it more reusable and make other React components more UI oriented. Also helps with avoiding prop drilling.
 
-- overall architecture and code quality (readability, decoupledness, etc)
-- file structure
-- naming (variables, files, etc)
-- test coverage (see instructions for [running tests](#running-tests))
-- proficiency at languages and libraries chosen for the task
+### Dealing cards logic
 
-If you wish to work full-stack, please attempt both frontend and backend in separate Pull Requests. Submit a PR first with your most comfortable or desired choice, so we can offer you feedback sooner.
+Dealing, resetting the game logic is not inside of React code. I try to keep the app logic outside of React components as much as possible. Used closure mechanism to make [drawRandomCards](https://github.com/uplift-interview/uplift-interview-rustam-ashurmatov/blob/feature/frontend/frontend/src/helpers/drawRandomCards.ts) have it's own state and store the cards left. This way whenever I call it, I can always see cards left.
 
-## General instructions
+### Animations
 
-- Please note there is a shared `.env` file for environment variables. This file is used by
-  frontend and backend.
-- Please lint and explain your code (even just briefly). CI runs checks, you can see them in `.github/workflows`
-- After completing the challenge to a level that you're satisfied shows off your expertise,
-  open a pull request against master (open two separate ones if you're doing frontend + backend)
-- In your PR add a description explaining anything you think is worthwhile, summarizing
-  your approach.
-- The repo uses CI to run tests and lint checks on your PR. We'd like to see those passing.
+Initially was using just CSS, but went with Framer Motion.
 
-## Frontend challenge
+## Screenshots and Screen Recordings
 
-The task is to build a simple card game. The designs are in Figma, you can see [desktop](https://www.figma.com/file/TQSDNvCd0WJFhYQuwtUS8c/Interview-Card-Game?node-id=0%3A1) and [mobile](https://www.figma.com/file/TQSDNvCd0WJFhYQuwtUS8c/Interview-Card-Game?node-id=2%3A352) pages. The fonts should be available in Google Fonts, but we also included them in assets if they ever take them down (has happened before). It doesn't have to be pixel perfect, but it should look nice.
+<!-- Please attach screenshots and recordings (animated gifs, mp4s - GitHub supports these). -->
 
-The program should perform the following functions.
+Desktop (1920x1080):
 
-1. Assuming a standard deck (52 cards of 4 suits: ♣ Clubs, ♦ Diamonds, ♥ Hearts, ♠ Spades).
-2. Press a "Deal" button to deal 5 random cards.
-3. Pressing the button again should deal 5 unique, random cards. Within the same game, you should never get the same cards again that you got in the past (just like a physical deck).
-4. Add a card counter which shows how many cards are left.
-5. Add an ace counter which shows how many aces are left. (this is not present in the designs at the time of this writing, you can do it the way it makes most sense to you, consistent with the designs)
-6. Add a button to reset the game.
-7. When all the aces have been dealt, "Game Over" should be displayed.
-8. If there is an ace in the last draw and there are no more cards left to deal, display "Winner", otherwise display "You Lose. Better luck next time!" Last draw means the last draw that is allowed, as there could be additional cards left to deal, but no aces.
-9. Bonus: Animations. Wow us!
+- Start:
+  ![image](https://user-images.githubusercontent.com/37442533/164527270-093dd518-b6df-46af-90f7-fbc1fdd81de9.png)
+- Game Over:
+  ![image](https://user-images.githubusercontent.com/37442533/164527431-5e7d92b2-4d15-41ea-9fff-f5602423ddea.png)
+- Winner (tilted position looked nice, so I kept it):
+  ![image](https://user-images.githubusercontent.com/37442533/164527508-424236ea-1c6b-4d4b-bc19-8c69844ecc02.png)
+- Loser:
+  ![image](https://user-images.githubusercontent.com/37442533/164527687-950eea69-7ab7-41b2-8f3e-9d6aac37d12d.png)
 
-Requirements:
+Mobile (iPhone XR - 375x667):
 
-- React
-- Tailwind
+- Start:
+  ![image](https://user-images.githubusercontent.com/37442533/164527989-aa81dc3d-83a6-4f18-9bef-461a48043119.png)
+- Game Over:
+  ![image](https://user-images.githubusercontent.com/37442533/164528033-5aa44b00-2d22-41cf-abd4-1d2a1244d8b2.png)
+- Winner:
+  ![image](https://user-images.githubusercontent.com/37442533/164528147-b39e04ff-e67c-4c7a-a77d-149551bc88e0.png)
+- Loser:
+  ![image](https://user-images.githubusercontent.com/37442533/164527936-d59a22fc-75bb-4d68-9012-c2cb9fc35a7b.png)
 
-Please write tests.
+Desktop recording:
 
-Feel free to use any additional libraries.
+https://user-images.githubusercontent.com/37442533/164531480-614b671c-a7a9-4cb7-a6ce-dc4aa58892c3.mp4
 
-[Example implementation.](https://drive.google.com/file/d/1uIYhG-74wrWs7YZx6Zz9Bdn3WSEtaIWY/view?usp=sharing)
+https://user-images.githubusercontent.com/37442533/164531486-3712ac78-b63a-4480-b6c7-5080ed87c9a9.mp4
 
-### Troubleshooting & Tips
+https://user-images.githubusercontent.com/37442533/164531487-05a1d528-f7a7-49e9-aa5e-26d071a545e2.mp4
 
-If you have any issues with husky/commit hooks, you may remove the \*.py section of "lint-staged" in package.json
+Mobile recording:
 
-### Design
+https://user-images.githubusercontent.com/37442533/164532001-28c1059a-fb9f-4f0e-ab55-c233ad232b7f.mp4
 
-- [desktop](https://www.figma.com/file/TQSDNvCd0WJFhYQuwtUS8c/Interview-Card-Game?node-id=2%3A352)
-
-- [mobile](https://www.figma.com/file/TQSDNvCd0WJFhYQuwtUS8c/Interview-Card-Game?node-id=2%3A352)
-
-### Requirements
-
-- Node 12+ (tested on 12.3.1)
-- Yarn 1+ (tested on 1.16.0)
-
-### Getting Started
-
-    yarn install
-
-Then:
-
-    yarn start
-
-Your browser will automatically open to http://localhost:3000 by Create React App. Changes should be reflected automatically.
-
-See [CRA documentation](https://facebook.github.io/create-react-app/).
-
-You are welcome to use Next.js instead, we just set up CRA for convenience.
-
-## Backend challenge: Python
-
-**TL;DR (but please, read on): backend version of the frontend card game.**
-Use Django (v3+), graphene (v2+), and a SQL database (postgres, for migrations).
-
-Session, auth or login are all optional, but clean implementations earn points.
-
-**Do NOT install additional python dependencies.** (e.g. a library that implements a deck)
-
-1. Assuming a standard deck (52 cards of 4 suits: ♣ Clubs, ♦ Diamonds, ♥ Hearts, ♠ Spades).
-2. GraphQL mutation to deal 5 unique, random cards (or fewer if there aren't 5 left).
-   - Within the same game, you should never get the same cards again that you got in the past (just like a physical deck).
-   - **Game is over when all Aces have been dealt.** If this happens in the final hand, the user Wins; otherwise, the user loses.
-3. The GraphQL API should provide access to,
-   - Remaining card count
-   - Remaining Ace count
-   - Game status
-4. The GraphQL API should also provide a way to,
-   - Start a new game
-   - Deal a new hand
-   - Reset the in-progress game
-5. Display "Game Over" on completion. If the User wins, also display "Winner"; otherwise, display "You Lose. Better luck next time!"
-6. Unit tests.
-7. Bonuses:
-   - Streak of wins/loses/games played in <period> (can be the last hour, but should be configurable)
-   - Storing user details, login/out
-   - Rig the game (e.g. player always wins)
-   - Custom deck support (e.g. other deck images, other lengths of decks, not just 52 cards)
-
-You can implement your own database architecture (models) and your own GraphQL schema. You do not have to copy the playground schema (mentioned below), although you can use it for inspiration.
-
-You also don't need to implement authentication (although you are welcome to, if you prefer). You can fake it at the middleware level, or log in to the Django admin and send subsequent requests with the session information set by Django.
-
-Feel free to use any additional libraries.
-
-You can run a sample query at http://localhost:5000/graphql/
-
-```graphql
-query {
-  me {
-    username
-    email
-  }
-}
-```
-
-### Getting started
-
-On MacOS, use [brew](https://brew.sh/) to manage installation of supporting programs, as it keeps things tidy.
-
-For backend, the recommended way is to use poetry and pyenv. All of the commands in this section are from the `server` folder.
-
-You may also work in docker, using the provided `./docker-assist` and `docker-compose.yml`, but it's generally quicker to develop locally. See `docker/Docker.server/Dockerfile` for the docker setup, and note that poetry is set up to export to `requirements.txt`.
-
-Install [poetry](https://python-poetry.org/). To manage python versions, we recommend installing [`pyenv`](https://github.com/pyenv/pyenv). See [the `poetry` documentation](https://python-poetry.org/docs/managing-environments/) for details.
-
-Then install Python dependencies:
-
-    cd server/
-    # try one of these
-    pyenv install 3.9.9  # or pyenv local 3.9.9
-    poetry env use ~/.pyenv/versions/3.9.9/bin/python
-    poetry install
-    # or
-    poetry install --python `which python3`
-
-If you don't have it already, you'll also want to install Postgres. Version 10 or later should be fine.
-
-If you have issues:
-
-- Check which pyenv version homebrew installs https://github.com/Homebrew/homebrew-core/blob/master/Formula/pyenv.rb#L4
-- See what versions of python that pyenv version supports: https://github.com/pyenv/pyenv/tree/v1.2.19/plugins/python-build/share/python-build
-
-Copy example env vars to `.env`. You might need to change `DATABASE_URL` based on your environment.
-
-    cp ../.env.example ../.env
-
-Create the `uplifty` database:
-
-    createdb uplifty
-
-Load the sample user data:
-
-    poetry run ./manage.py migrate
-    poetry run ./manage.py loaddata uplifty/fixtures/users.json
-    poetry run ./manage.py runserver 5000
-
-Now you can go to http://localhost:5000, http://localhost:5000/graphql/, or http://localhost:5000/admin/ for the Django admin.
-
-Log in to the admin with the [sample test user](#sample-test-user) from below and try the sample query from the challenge.
-
-### Installing packages
-
-```
-poetry add <package name>  # this automatically adds it to pyproject.toml and poetry.lock
-```
-
-If you manually update `pyproject.toml`, make sure you run `poetry update` to update the lockfile.
-
-### Running tests
-
-Please run the tests, and lint your backend code. This helps us review code, as it's already consistent with this project.
-
-```
-yarn autoflake
-yarn pytest:fresh
-```
-
-Or check out `package.json` for other options.
-
-### Server architecture
-
-- PostgreSQL 10+
-- Python 3.9+
-- Django 3
-- [django-environ](https://github.com/joke2k/django-environ) for easy environment configuration via `.env` files
-
-### Sample test user
-
-The database is created with a sample test user:
-
-| Name     | Value                   |
-| -------- | ----------------------- |
-| Username | interview               |
-| Email    | interview@uplift.agency |
-| Password | uplifty                 |
-
-You can change these in the Django admin if you wish.
-
-## Backend challenge: NodeJS
-
-If you are working with node instead of Django, we'd like you to do the same backend challenge with TypeScript and GraphQL.
-
-There is a starter server you can use in `node-server/`, and it runs CI using `.github/workflows/backend_node.yml`. Please make sure the build passes.
-
-## Backend challenge: PHP
-
-If you are working with PHP instead of Django, we'd like you to do the same backend challenge with Laravel and GraphQL.
-
-There is a starter server you can use in `php-server/`; please see the [README](php-server/README.md) in that directory.
-
-It runs CI using `.github/workflows/backend_php.yml`. Please make sure the build passes.
-
-## License and sharing
-
-This code is intended to be private. You are not allowed to share any of the base template code without Uplift's express permission. Please reach out to us **before** you share any of the code in this repository with others.
-
-That said, we understand you may want to show others your work. If you're proud of your work on this exercise and want to share it with future companies or add to your portfolio, we kindly request you help us keep the codebase as private as possible. If it's easy for other candidates to find a good coding exercise submission, they will, and then we have to invest a bunch of time to change the requirements so that old examples cannot be used. Unfortunately we've had cases of applicants copying examples they found.
-
-Here are some ideas to share this more privately. We would really appreciate if you followed them:
-
-
-- Host the code privately and only give access to others upon request. This is the best way to ensure it's not easy to find.
-
-- Share only a few of the files, but not enough to tie everything together.
-
-- Host it on your own server, or bitbucket instead of github.
+https://user-images.githubusercontent.com/37442533/164532004-67b9bb31-ace7-4b4b-b997-6e1eb00c2dd9.mp4
